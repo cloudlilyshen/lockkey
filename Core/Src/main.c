@@ -28,7 +28,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-static AppTask_t app;
+static AppTask_t app;//remote pull test
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
