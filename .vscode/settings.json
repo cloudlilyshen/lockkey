@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "main.h": "c",
+        "para.h": "c",
+        "rs485.h": "c",
+        "util.h": "c",
+        "printf.h": "c",
+        "stm32f0xx_hal.h": "c",
+        "mifare_card.h": "c"
+    }
+}
