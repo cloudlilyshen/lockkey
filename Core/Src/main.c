@@ -319,7 +319,7 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
   // LED_G_ON();
-  //HAL_GPIO_WritePin(GPIOA, LED_G_Pin, GPIO_PIN_SET);
+  // HAL_GPIO_WritePin(GPIOA, LED_G_Pin, GPIO_PIN_SET);
 
 }
 

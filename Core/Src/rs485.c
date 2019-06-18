@@ -134,7 +134,7 @@ static void Rs485WorkDoRecParse(void)
   }
 }
 
-static void Rs485WorkDoRecFullPacket(void)
+static bool Rs485WorkDoRecFullPacket(void)
 {
 
   uint16_t total_len;
@@ -161,8 +161,8 @@ static void Rs485WorkDoRecFullPacket(void)
       }
       if(CommCheckHeadTailCS((uint8_t *)&bufferRs485,sizeof(Rs485Comm_t)))
       {
-        Rs485WorkDoRecParse();
         rs485RxHeader = (rs485RxHeader + data_len)%RS485_RX_BYTES;      
+        return TRUE;
       }
       else
       {
@@ -174,6 +174,7 @@ static void Rs485WorkDoRecFullPacket(void)
       rs485RxHeader = (rs485RxHeader + 1)%RS485_RX_BYTES;//release the data
     }
   }
+  return FALSE;
 }
 
 
@@ -220,23 +221,30 @@ void Rs485MgrHandle(void)
     break;
 
     case Rs485Msg_Init:	
-          Rs485MspInit();
-          BoardRSSerialInit(RS485_UART_RS,Rs485RecvDataHandle,Rs485RecErrHandle);
-          BoardRSSerialRecvMsgInit();   
-          app->Timer_Counts.rs485_counts_1ms = 0;  
-          app->AppStatus = rs485Ready;
-          rs485.msg = Rs485Msg_WaitRecd;  
+      Rs485MspInit();
+      BoardRSSerialInit(RS485_UART_RS,Rs485RecvDataHandle,Rs485RecErrHandle);
+      BoardRSSerialRecvMsgInit();   
+      app->Timer_Counts.rs485_counts_1ms = 0;  
+      app->AppStatus = rs485Ready;
+      rs485.msg = Rs485Msg_WaitRecd;  
     break;
     case Rs485Msg_WaitRecd:
-      if(app->Timer_Counts.rs485_counts_1ms > delay_10ms)
-          {
-            if(BoardRSSerialGetRXNEFlag(RS485_UART_RS) == 0)
-            {
-              BoardRSSerialRecIT(RS485_UART_RS);
-            }
-            Rs485WorkDoRecFullPacket();  	
-            app->Timer_Counts.rs485_counts_1ms = 0;  			
-          }
+      if(BoardRSSerialGetRXNEFlag(RS485_UART_RS) == 0)
+      {
+        BoardRSSerialRecIT(RS485_UART_RS);
+      }
+      if(Rs485WorkDoRecFullPacket())
+      {
+        rs485.msg = Rs485Msg_Parse;  
+        app->Timer_Counts.rs485_counts_1ms = 0;  			
+      }
+    break;
+    case Rs485Msg_Parse:
+      if(app->Timer_Counts.rs485_counts_1ms > delay_20ms)
+      {
+        Rs485WorkDoRecParse();
+        rs485.msg = Rs485Msg_WaitRecd;  
+      }
     break;
     case Rs485Msg_End:
       if(app->Timer_Counts.rs485_counts_1ms > delay_1s)//finished   

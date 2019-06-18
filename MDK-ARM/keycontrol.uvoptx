@@ -158,7 +158,7 @@
           <Type>0</Type>
           <LineNumber>56</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134229030</Address>
+          <Address>134229058</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -174,7 +174,7 @@
           <Type>0</Type>
           <LineNumber>151</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134227702</Address>
+          <Address>134227720</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -200,22 +200,6 @@
           <Filename>..\Core\Src\rfid.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\keycontrol\../Core/Src/rfid.c\166</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>169</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134227788</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Core\Src\rs485.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\keycontrol\../Core/Src/rs485.c\169</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
