@@ -228,6 +228,7 @@ void Rs485MgrHandle(void)
           rs485.msg = Rs485Msg_WaitRecd;  
     break;
     case Rs485Msg_WaitRecd:
+      if(app->Timer_Counts.rs485_counts_1ms > delay_10ms)
           {
             if(BoardRSSerialGetRXNEFlag(RS485_UART_RS) == 0)
             {

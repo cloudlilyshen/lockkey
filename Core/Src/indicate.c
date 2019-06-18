@@ -64,7 +64,7 @@ static void ledMspInit(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct); 
 
-  LED_G_OFF();     
+  LED_G_OFF();       
 }
 
 static uint16_t led_delay_times_ms;
@@ -134,7 +134,9 @@ void LedMgrHandle(void)
     case LedMsg_Flash_Seq_OFF_Delay:
       if(app->Timer_Counts.led_counts_1ms > delay_400ms)
       {
-        LED_G_ON();        
+        LED_G_ON();    
+        // LED_Y_ON();    
+        LED_R_ON();
         app->Timer_Counts.led_counts_1ms = 0;
         led.msg = LedMsg_Flash_Seq_ON_Delay;              
       }
