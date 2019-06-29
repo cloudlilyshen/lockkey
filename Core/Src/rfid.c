@@ -235,18 +235,24 @@ void RfidMgrHandle(void)
                 {
                     case lock_status_locked_init://干上电，锁是关闭的，里面有key,保持锁关闭状态，不需要显示
                         app->lock_status = lock_status_havekey_locked; 
-                        read_interval = delay_5s;                    
+                        read_interval = delay_200ms;                    
+                        // read_interval = delay_5s;                    
                         rfid.msg = RfidMsg_FM175xxInit;
                     break;
                     case lock_status_nokey_unlocked://已处于开锁状态，进入用户还钥匙流程
                         rfid.msg = RfidMsg_KeyClose;                     
                     break;
                     case lock_status_havekey_locked://保持状态不变
-                        app->lock_status = lock_status_nokey_locked;
-                        LedEndDisplay();
+                        // app->lock_status = lock_status_nokey_locked;
+                        LedEndDisplay();                       
+                        // read_interval = delay_5s;                    
+                        read_interval = delay_200ms;                    
+                        rfid.msg = RfidMsg_FM175xxInit;
                     break;
                     case lock_status_nokey_locked://切换状态
                         app->lock_status = lock_status_havekey_locked;                    
+                        read_interval = delay_200ms;                    
+                        rfid.msg = RfidMsg_FM175xxInit;
                     break;
                     default:
                     break;
@@ -266,7 +272,8 @@ void RfidMgrHandle(void)
             app->lock_status = lock_status_havekey_locked;
             rfid.msg = RfidMsg_FM175xxInit;
             app->Timer_Counts.rfid_counts_1ms = 0;    
-            read_interval = delay_5s;  
+            read_interval = delay_200ms;  
+            // read_interval = delay_5s;  
             LedLockSucDisplay();           
         }
     break;

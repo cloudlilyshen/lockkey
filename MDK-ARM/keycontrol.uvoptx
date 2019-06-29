@@ -120,6 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
+          <Name>猬ew淢?淢?趏縨</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -158,7 +159,7 @@
           <Type>0</Type>
           <LineNumber>56</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134229058</Address>
+          <Address>134229054</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -174,7 +175,7 @@
           <Type>0</Type>
           <LineNumber>151</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134227720</Address>
+          <Address>134227728</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -188,9 +189,9 @@
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>166</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134226708</Address>
+          <LineNumber>162</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134226672</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -199,7 +200,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Core\Src\rfid.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\keycontrol\../Core/Src/rfid.c\166</Expression>
+          <Expression>\\keycontrol\../Core/Src/rfid.c\162</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
